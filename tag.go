@@ -73,6 +73,11 @@ func (tag *Tag) AddUserDefinedTextFrame(udtf UserDefinedTextFrame) {
 	tag.AddFrame(tag.CommonID("User defined text information frame"), udtf)
 }
 
+// AddUserDefinedURLFrame adds the custom frame (WXXX) to tag.
+func (tag *Tag) AddUserDefinedURLFrame(uduf UserDefinedURLrame) {
+	tag.AddFrame(tag.CommonID("User defined URL link frame"), uduf)
+}
+
 // AddUFIDFrame adds the unique file identifier frame (UFID) to tag.
 func (tag *Tag) AddUFIDFrame(ufid UFIDFrame) {
 	tag.AddFrame(tag.CommonID("Unique file identifier"), ufid)

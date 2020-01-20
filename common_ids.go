@@ -50,6 +50,7 @@ var (
 		"User defined text information frame":      "TXXX",
 		"Unique file identifier":                   "UFID",
 		"Unsynchronised lyrics/text transcription": "USLT",
+		"User defined URL link frame":              "WXXX",
 
 		// Just for convenience.
 		"Artist": "TPE1",
@@ -108,6 +109,7 @@ var (
 		"User defined text information frame":      "TXXX",
 		"Unique file identifier":                   "UFID",
 		"Unsynchronised lyrics/text transcription": "USLT",
+		"User defined URL link frame":              "WXXX",
 
 		// Deprecated frames of ID3v2.3.
 		"Date":                  "TDRC",
@@ -137,13 +139,14 @@ var parsers = map[string]func(*bufReader) (Framer, error){
 	"TXXX": parseUserDefinedTextFrame,
 	"UFID": parseUFIDFrame,
 	"USLT": parseUnsynchronisedLyricsFrame,
+	"WXXX": parseUserDefinedURLFrame,
 }
 
 // mustFrameBeInSequence checks if frame with corresponding ID must
 // be added to sequence.
 func mustFrameBeInSequence(id string) bool {
 	switch id {
-	case "APIC", "COMM", "TXXX", "USLT":
+	case "APIC", "COMM", "TXXX", "USLT", "WXXX":
 		return true
 	}
 	return false

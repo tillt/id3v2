@@ -77,3 +77,22 @@ func TestSequenceUSLFsUniqueness(t *testing.T) {
 		t.Errorf("Expected %v frames, got %v", 2, s.Count())
 	}
 }
+
+func TestSequenceWXXXsUniqueness(t *testing.T) {
+	t.Parallel()
+
+	s := getSequence()
+	defer putSequence(s)
+	s.AddFrame(UserDefinedURLFrame{Description: "A"})
+	if s.Count() != 1 {
+		t.Errorf("Expected %v frames, got %v", 1, s.Count())
+	}
+	s.AddFrame(UserDefinedURLFrame{Description: "B"})
+	if s.Count() != 2 {
+		t.Errorf("Expected %v frames, got %v", 2, s.Count())
+	}
+	s.AddFrame(UserDefinedURLFrame{Description: "B"})
+	if s.Count() != 2 {
+		t.Errorf("Expected %v frames, got %v", 2, s.Count())
+	}
+}
